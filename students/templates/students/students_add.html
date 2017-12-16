@@ -18,7 +18,8 @@
 
 {% endblock status_message %}
 
-<form action="." method="post" enctype="multipart/form-data" role="form" class="form-horizontal" >
+<form action="." method="post" enctype="multipart/form-data" 
+		role="form" class="form-horizontal">
   {% csrf_token %}
 	
 	<div class="form-group {% if errors.first_name %}has-error{% endif %}" >

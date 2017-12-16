@@ -9,6 +9,15 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 from django.conf import global_settings
 
+# for gmail or google apps
+ADMIN_EMAIL = 'admin@studentsdb.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'harutonov88@gmail.com'
+EMAIL_HOST_PASSSWORD = 'urupit73'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -28,6 +37,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Application definition
 
@@ -38,6 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'students',
 )
 
@@ -89,3 +100,4 @@ TEMPLATE_CONTEXT_PROCESSORS = \
     "django.core.context_processors.request",
     "studentsdb.context_processors.students_proc",
 )
+
