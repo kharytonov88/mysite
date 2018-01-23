@@ -9,20 +9,21 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 from django.conf import global_settings
 
-# for gmail or google apps
-ADMIN_EMAIL = 'admin@studentsdb.com'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = 'harutonov88@gmail.com'
-EMAIL_HOST_PASSSWORD = 'urupit73'
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 PORTAL_URL = 'http://localhost:8000'
+
+# email settings
+# please, set here you smtp server details and your admin email
+ADMIN_EMAIL = 'admin@studentsdb.com'
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'vitaliypodoba@gmail.com'
+EMAIL_HOST_PASSWORD = '********'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -99,5 +100,5 @@ TEMPLATE_CONTEXT_PROCESSORS = \
     global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     "django.core.context_processors.request",
     "studentsdb.context_processors.students_proc",
+    "students.context_processors.groups_processor"
 )
-

@@ -29,8 +29,9 @@
         <strong>Група:</strong>
         <select>
           <option value="">Усі Студенти</option>
-          <option value="">Мтм-21, Віталій Подоба</option>
-          <option value="">Мтм-22, Андрій Петров</option>
+          {% for group in GROUPS %}
+          <option value="{{ group.id }}"{% if group.selected %}selected="1"{% endif %}>{{group.title}}{% if group.leader %}, {{ group.leader }}{% endif %}</option>
+          {% endfor %} 
         </select>
       </div>
     </div>
@@ -40,10 +41,10 @@
     <div class="row" id="sub-header"> 
       <div class="col-xs-12">
         <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" {% if request.path == '/' %} class="active"{% endif %}><a href="{% url "home" %}">Студенти</a></li>
-          <li role="presentation" {% if '/journal' in request.path %} class="active"{% endif %}><a href="/journal">Відвідування</a></li>
-          <li role="presentation" {% if '/groups' in request.path %} class="active"{% endif %}><a href="{% url "groups" %}">Групи</a></li>
-          <li role="presentation" {% if '/contact_admin' in request.path %} class="active"{% endif %}><a href="{% url "contact_admin" %}">Контакт</a> </li>
+          <li role="presentation" {% if request.path == '/' %}class="active"{% endif %}><a href="{% url "home" %}">Студенти</a></li>
+          <li role="presentation" {% if '/journal' in request.path %}class="active"{% endif %}><a href="/journal">Відвідування</a></li>
+          <li role="presentation" {% if '/groups' in request.path %}class="active"{% endif %}><a href="{% url "groups" %}">Групи</a></li>
+          <li role="presentation" {% if '/contact-admin' in request.path %}class="active"{% endif %}><a href="{% url "contact_admin" %}">Контакт</a></li>
         </ul>
       </div>
     </div>
@@ -52,9 +53,10 @@
     <!-- Start Content Columns -->
     <div class="row" id="content-columns">
       <div class="col-xs-12" id="content-column">
+
         {% block status_message %}
         {% if request.GET.status_message %}
-        <div class="alert alert-warning" role="alert" >{{ request.GET.status_message }}</div>
+        <div class="alert alert-warning" role="alert">{{ request.GET.status_message }}</div>
         {% endif %}
         {% endblock %}
 
@@ -78,7 +80,9 @@
 
   <!-- Javascripts Inclusion -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="{% static "js/jquery.cookie.js" %}"></script>
   <script src="https://cdn.jsdelivr.net/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="{% static "js/main.js" %}"></script>
   {% block extra_js %}{% endblock extra_js %}
 </body>
 </html>
