@@ -1,0 +1,8 @@
+*.pyc
+*.egg
+*.egg-info
+*∼
+*.mo
+*.log
+personal_settings.py
+db.py
